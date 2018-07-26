@@ -21,6 +21,26 @@ Vue.use(DatetimePlugin){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 
 Vue.config.productionTip = false{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 
+{{#vuex}}
+// 路由拦截器
+// 不重定向白名单
+const whites = ['/']
+// 切换页面时,显示正在加载
+router.beforeEach(function (to, from, next) {
+  store.commit('SWITCH_IS_LOADING', true)
+  if (to.path.indexOf(whites) !== -1) {
+    next()
+  } else {
+    // 拦截操作
+    next()
+  }
+})
+
+// 切换页面成功后,隐藏正在加载
+router.afterEach(function (to) {
+  store.commit('SWITCH_IS_LOADING', false)
+})
+{{/vuex}}
 // 添加一个请求拦截器
 AjaxPlugin.$http.interceptors.request.use(function (config) {
   // 在请求发送之前做一些事
@@ -53,5 +73,8 @@ AjaxPlugin.$http.interceptors.response.use(function (res) {
 /* eslint-disable no-new */
 new Vue({
   router,
+  {{#vuex}}
+  store,
+  {{/vuex}}
   render: h => h(App){{#if_eq lintConfig "airbnb"}},{{/if_eq}}
 }).$mount('#app-box'){{#if_eq lintConfig "airbnb"}};{{/if_eq}}

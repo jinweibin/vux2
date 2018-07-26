@@ -1,11 +1,11 @@
 <template>
   <div>
     <div class="vux-demo">
-      <img class="logo" src="../assets/vux_logo.png">
+      <img class="logo" src="../assets/lt_awesome_logo.png">
       <h1> {{ msg }}</h1>
     </div>
     <group title="cell demo">
-      <cell title="VUX" value="cool" is-link></cell>
+      <cell title="{{name}}" value="cool" is-link></cell>
     </group>
   </div>
 </template>
