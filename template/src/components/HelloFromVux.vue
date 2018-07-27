@@ -3,6 +3,7 @@
     <div class="vux-demo">
       <img class="logo" src="../assets/lt_awesome_logo.png">
       <h1> {{ msg }}</h1>
+      <h1>{{ time }}</h1>
     </div>
     <group title="cell demo">
       <cell title="{{name}}" value="cool" is-link></cell>
@@ -24,8 +25,12 @@ export default {
       // with hot-reload because the reloaded component
       // preserves its current state and we are modifying
       // its initial state.
-      msg: 'Hello World!'{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+      msg: 'Hello World!',
+      time: 1532611785000{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
     }{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+  },
+  created: function () {
+    this.$api.testAPI(1)
   }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
 }{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 </script>
