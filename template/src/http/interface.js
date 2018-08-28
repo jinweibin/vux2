@@ -46,12 +46,21 @@ AjaxPlugin.$http.interceptors.response.use(function (res) {
 
 /* 将所有接口统一起来便于维护
  * 如果项目很大可以将 url 独立成文件，接口分成不同的模块
+ * get方法的第二个参数是 get 的 config, 所以要传参需要设置到 params 下,
  */
-export const testAPI = id => {
-  return AjaxPlugin.$http.get('/url', id)
+export const testGetAPI = id => {
+  return AjaxPlugin.$http.get('/url', {
+    params: {
+      id: id
+    }
+  })
+}
+export const testPostAPI = data => {
+  return AjaxPlugin.$http.post('/url', data)
 }
 
 // 默认全部倒出
 export default {
-  testAPI
+  testGetAPI,
+  testPostAPI,
 }

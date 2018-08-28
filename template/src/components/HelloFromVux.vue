@@ -30,7 +30,7 @@ export default {
     }{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
   },
   created: function () {
-    this.$api.testAPI(1)
+    this.$api.testGetAPI(1)
   }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
 }{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 </script>
